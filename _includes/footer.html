@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{site.data.settings.title}}</title>
+  <link rel="stylesheet" href="path/to/your/css/file.css">
+  <style>
+    :root {
+      --background-color: #ffffff;
+      --text-color: #000000;
+    }
+
+    [data-theme="dark"] {
+      --background-color: #000000;
+      --text-color: #ffffff;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .toggle-theme {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Content of your site -->
+
+  <!-- begin footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col col-12">
+
+          <div class="footer__inner">
+            <div class="row">
+              {% include footer-widgets/widget-info.html %}
+              {% include footer-widgets/widget-recent-posts.html %}
+              {% include footer-widgets/widget-subscribe.html %}
+            </div>
+          </div>
+
+          <div class="footer__info">
+            <div class="copyright">{{site.time | date: '%Y'}} &copy; <a href="/">{{site.data.settings.title}}</a>. <a href="https://www.keyujin.com/">Keyu Jin</a>.</div>
+            <div class="footer__info__right">
+              {% if site.data.settings.color_scheme == "auto" %}
+              <div class="toggle-theme">
+                <div class="toggle-moon" title="Enable dark mode" aria-hidden="true"><i class="ion ion-ios-moon"></i> <span class="toggle-text">Dark</span></div>
+                <div class="toggle-sun" title="Enable light mode" aria-hidden="true"><i class="ion ion-ios-sunny"></i> <span class="toggle-text">Light</span></div>
+              </div>
+              {% elsif site.data.settings.color_scheme == "light" or site.data.settings.color_scheme == "dark" %}
+              {% else %}
+              <div class="toggle-theme">
+                <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon" aria-hidden="true"></i></div>
+                <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny" aria-hidden="true"></i></div>
+              </div>
+              {% endif %}
+              <div class="top" title="Top"><i class="ion-md-arrow-round-up"></i> <span class="top__text">Back to top</span></div>
+            </div>
+          </div>
+
+          <center><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18026925号-4</a></center>
+
+          <center><div style="width:300px;margin:0 auto; padding:20px 0;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010402004000" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+              <img src="https://keyujin2018.github.io/images/0001.png" style="float:left;"/>
+              <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备 33010402004000号</p>
+            </a>
+          </div></center>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end footer -->
+
+  <!-- Theme toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleMoon = document.querySelector(".toggle-moon");
+      const toggleSun = document.querySelector(".toggle-sun");
+
+      function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        if (currentTheme === "light") {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
+      }
+
+      // Event listeners for the theme toggle buttons
+      toggleMoon.addEventListener("click", toggleTheme);
+      toggleSun.addEventListener("click", toggleTheme);
+
+      // Apply the saved theme from localStorage
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("light");
+      }
+    });
+  </script>
+</body>
+</html>
