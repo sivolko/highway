@@ -3,7 +3,7 @@
 title: "Highway Nomads"
 description: "A place for not just travel bloggers"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.keyujin.cn" # the base hostname & protocol for your site
+url: "https://highwaynomads.org" # the base hostname & protocol for your site
 #-------------------------------
 # Build Settings
 markdown: kramdown

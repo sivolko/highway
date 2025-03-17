@@ -5,7 +5,7 @@ description: Decrypting the US China Relationship
 date: 2024-06-27 15:01:35 +0300
 author: admin
 image: '/images/53818807369_4aafa98c9a_c.jpg'
-video_embed: https://www.youtube.com/embed/gnDpqjLGwl8
+video_embed: https://www.youtube.com/embed/UDgdJG7Z_mI?si=htk9zzbdsU_RvB_U
 tags: [video]
 featured: true
 ---

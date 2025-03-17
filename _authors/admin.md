@@ -1,8 +1,8 @@
 ---
 username: admin
-name: Keyu Jin
+name: Shubhendu
 image: '/images/200.jpg'
 twitter: https://x.com/KeyuJin
 website: https://www.keyujin.com/
 ---
-Associate Professor at the London School of Economics and Political Science
+A troubleshooter Guy Who survived being watching Bear Grylls shows now he hunts cyber threats for the survival.
