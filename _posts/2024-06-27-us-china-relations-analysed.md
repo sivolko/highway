@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 中美关系分析｜2024大连夏季达沃斯
+title: Decrypting the US China Relationship | 2024 Dalian Summer Davos
 description: Decrypting the US China Relationship
 date: 2024-06-27 15:01:35 +0300
 author: admin
@@ -9,11 +9,10 @@ video_embed: https://www.youtube.com/embed/gnDpqjLGwl8
 tags: [video]
 featured: true
 ---
-发言人：柯成兴、格雷厄姆·艾利森、罗宾·尼布利特爵士、金刻羽、郭丽洁、程立
+Speakers: Cheng Chengxing, Graham Allison, Sir Robin Niblett, Keyu Jin, Guo Lijie, Cheng Li
 
-在中美关系依然错综复杂之际，两国之间的合作对于协调全球安全、气候变化、世界贸易和债务等全球优先事项仍然至关重要。
+As US-China relations remain complex, cooperation between the two countries is still crucial for coordinating global priorities such as security, climate change, world trade, and debt.
 
-本场会议将邀请知名专家探讨2024年下半年及以后两国关系的预期发展。
+This session will invite renowned experts to discuss the expected developments in the relationship between the two countries in the second half of 2024 and beyond.
 
-* 本场会议由中国环球电视网协办。
-
+* This session is co-hosted by China Global Television Network.

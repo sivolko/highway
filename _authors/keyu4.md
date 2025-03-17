@@ -1,9 +1,9 @@
 ---
 username: Keyu
-name: 金刻羽
+name: Keyu Jin
 image: '/images/200.jpg'
 location:
 website: https://www.keyujin.com/
 twitter: https://x.com/KeyuJin
 ---
-伦敦政治经济学院副教授
+Associate Professor at the London School of Economics and Political Science

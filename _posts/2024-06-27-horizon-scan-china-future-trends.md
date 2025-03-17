@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 展望扫描 中国未来趋势｜2024大连夏季达沃斯
-description: Horizon Scan China Future Trends
+title: "Horizon Scan: China Future Trends | 2024 Dalian Summer Davos"
+description: "Horizon Scan China Future Trends"
 date: 2024-06-27 15:01:35 +0300
 author: admin
 image: '/images/53818852093_10ebc78b2e_c.jpg'
@@ -9,12 +9,12 @@ video_embed: https://www.youtube.com/embed/7X08N2Wp4Cw
 tags: [video]
 featured: true
 ---
-演讲嘉宾：埃斯瓦尔·普拉萨德（美国康奈尔大学教授）、金刻羽（英国伦敦政治经济学院经济学教授）、唐·温兰（英国《经济学人》中国商务与金融编辑）
+Speakers: Eswar Prasad (Professor at Cornell University, USA), Keyu Jin (Professor of Economics at the London School of Economics and Political Science, UK), Don Weinland (China Business and Finance Editor at The Economist, UK)
 
-了解中国这一全球主要经济体的背景至关重要，其技术领域快速发展，创新力度不断增强。
+Understanding the context of China, a major global economy, is crucial as its technology sector rapidly develops and its innovation efforts continue to strengthen.
 
-中国最关键的社会经济趋势是什么？这些趋势对世界意味着什么？
+What are the most critical socio-economic trends in China? What do these trends mean for the world?
 
-演讲嘉宾将于2024年6月27日在中国大连国际会议中心“Betazone”会议室举办的“新领军者年会”中发表演讲。
+The speakers will deliver their speeches at the "Annual Meeting of the New Champions" held in the "Betazone" room at the Dalian International Conference Center in China on June 27, 2024.
 
-* 版权所有：世界经济论坛/雅各布·波拉塞克
+* Copyright: World Economic Forum / Jakob Polacsek

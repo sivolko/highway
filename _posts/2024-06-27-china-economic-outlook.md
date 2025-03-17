@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 中国经济展望｜2024大连夏季达沃斯
+title: China Economic Outlook | 2024 Dalian Summer Davos
 description: China Economic Outlook
 date: 2024-06-27 18:05:55 +0300
 author: admin
@@ -10,11 +10,10 @@ tags: [video]
 featured: true
 ---
 
-演讲者：彭森、阿帕纳·巴拉德瓦吉、田薇、埃斯瓦尔·普拉萨德、金刻羽
+Speakers: Peng Sen, Aparna Bharadwaj, Tian Wei, Eswar Prasad, Keyu Jin
 
-中国宣布的经济增长目标为5%左右，预计将成为2024年全球经济增长的最大贡献者。
+China has announced an economic growth target of around 5%, and it is expected to be the largest contributor to global economic growth in 2024.
 
-需要采取哪些短期经济刺激措施和长期系统方法，才能从战略上重振增长前景，确保经济发展？
+What short-term economic stimulus measures and long-term systemic approaches are needed to strategically revitalize growth prospects and ensure economic development?
 
-* 本场会议由中国环球电视网协办。
-
+* This session is co-hosted by China Global Television Network.

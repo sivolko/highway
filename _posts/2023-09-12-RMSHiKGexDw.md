@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 全球產業鏈調整 中國地位會改變嗎？｜西方為何熱衷炒作“中國崩潰論”？｜專訪倫敦政治經濟學院教授金刻羽｜風雲對話｜
-description: 鳳凰衛視PhoenixTV
+title: "Global Supply Chain Adjustments: Will China's Position Change? | Why is the West Keen on Hyping the 'China Collapse Theory'? | Interview with LSE Professor Jin Keyu | Dialogue"
+description: "Phoenix TV"
 date: 2023-09-12 15:01:35 +0300
 author: admin
 image: '/images/sddefault.jpg'
 video_embed: https://www.youtube.com/embed/RMSHiKGexDw
-tags: [专访]
+tags: [interview]
 ---
-近來，美西方有聲音唱衰中國經濟。一些政客和媒體僅憑單項、局部、短期的波動數據來判斷全局，放大中國經濟發展過程中的階段性挑戰，給中國經濟“潑涼水”，企圖“掐滅”信心，“調減”預期。在此背景下，仍不乏有經濟學家提出客觀理性的看法。金刻羽是倫敦政治經濟學院最年輕的經濟學終身教授，主要研究國際宏觀經濟學和中國經濟，是真正能在西方核心影響力圈層捲起波瀾的中國聲音。近期，她出版了新書The New China Playbook《中國新策略》，嘗試客觀全面地介紹中國經濟的成長，並澄清西方世界對中國經濟的常見誤解和迷思。
+Recently, there have been voices in the Western media predicting the decline of the Chinese economy. Some politicians and media outlets make sweeping judgments based on isolated, partial, and short-term data fluctuations, exaggerating the temporary challenges in China's economic development, attempting to dampen confidence and lower expectations. In this context, there are still economists who offer objective and rational views. Jin Keyu, the youngest tenured professor of economics at the London School of Economics and Political Science, primarily researches international macroeconomics and the Chinese economy. She is a significant Chinese voice capable of making waves in the core circles of Western influence. Recently, she published a new book, "The New China Playbook," which attempts to provide an objective and comprehensive introduction to the growth of the Chinese economy and clarify common misconceptions and myths about the Chinese economy in the Western world.

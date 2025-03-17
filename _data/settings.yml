@@ -1,88 +1,73 @@
 #-------------------------------
 # Site Settings
-title: 金刻羽
-description: 人生不应该是刻意点缀你履历的过程，而是通过你的持久的热情、 投入和不断奋斗所描绘出的轨迹
-logo: "/images/logo1.png" # You can add own logo. For example "/images/logo.svg".
+title: Highway Nomads
+description: This is a highway Nomads blog
+logo: "/images/logo1.png" # You can add your own logo. For example "/images/logo.svg".
 logo_dark: "/images/logo2.png"
-color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
-
+color_scheme: auto # You can choose three modes: auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themselves.
 
 #-------------------------------
 # Navigation Settings
 menu_settings:
   menu_items:
-    - title: "首页"
+    - title: "Home"
       url: "/"
-    - title: "视音"
+    - title: "Videos"
       url: "/videos/"
-    - title: "金刻羽"
+    - title: "About"
       url: "/about/"
-    - title: "瞬间"
+    - title: "Elements"
       url: "/elements/"
-     
-      
-  
-
-
-
 
 #-------------------------------
 # Hero Settings
 hero:
   enable: true
-  hero_title: 羽善观今
-  hero_description: 
-
+  hero_title: We Wish Travel Therapy is covered by your health Insurance
+  hero_description: Highway Nomads brings real, hidden thrill , beyond social media! 
 
 #-------------------------------
 # Tags Section Settings
 tags_section:
   enable: true
   number_posts: 3 # To control how many posts to show under each tag section, set the value to a number. Three is the default.
-  number_columns: 3 # You can specify the number of columns from 1-4 for large screen resolution. By default, the theme uses three columns grid.
+  number_columns: 3 # You can specify the number of columns from 1-4 for large screen resolution. By default, the theme uses a three-column grid.
   tags:
-    - tag: "专栏"
-    - tag: "专访"
+    - tag: "column"
+    - tag: "interview"
+    - tag: "travel"
+    - tag: "bike"
+    - tag: "Offroad"
+    - tag: "Adventure"
+    - tag: "Camping"
+    - tag: "Hiking"
+    - tag: "Roadtrip"
 
 # You can add many tag sections to the homepage; each section will show the recent posts by the tag.
 
-
-#-------------------------------
-
-
-
 #-------------------------------
 # Footer Settings
-
 
 # Social Links
 social:
 - {icon: "twitter", link: "https://x.com/KeyuJin"}
 - {icon: "chrome", link: "https://www.keyujin.com/"}
 
-
 # Example of adding a new link to the footer - {icon: "instagram", link: "https://instagram.com"}
 # Other icons can be found at https://ionicons.com/v4/
-
-
-#-------------------------------
-
-
 
 #-------------------------------
 # Contact Settings
 contact:
   email: your@email.com # Add your form_id
-  description: Danto comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
+  description: Highway Nomads comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
 
 # NOTE
-# Danto theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
-
+# Highway Nomads theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
 
 #-------------------------------
 # Comment Section (Disqus)
 disqus_identifier: anvod-studio-test # Add your shortname for Disqus Comment. For example anvod-studio-test
-
 
 #-------------------------------
 # Google Analytics

@@ -1,43 +1,43 @@
 ---
 layout: post
-title: 《财新周刊》｜做全球网络最佳联结点
-description: 在网络时代，一国联结的广泛度与经济规模同样重要，在自身通过联结变强的同时，也要让网络中的其他节点得到强化
+title: "Caixin Weekly | Creating the Best Global Network Connection"
+description: "In the network era, the extent of a country's connections is as important as its economic scale. While strengthening itself through connections, it should also enhance other nodes in the network."
 date: 2019-11-25 15:01:35 +0300
 author: admin
 image: '/images/with_the_title_Creating_the_Best_G.png'
-tags: [专栏]
+tags: [column]
 ---
-来源于 《财新周刊》 2019年第45期 出版日期 2019年11月25日
+Source: Caixin Weekly, Issue 45, November 25, 2019
 
-> 在网络时代，一国联结的广泛度与经济规模同样重要，在自身通过联结变强的同时，也要让网络中的其他节点得到强化
+> In the network era, the extent of a country's connections is as important as its economic scale. While strengthening itself through connections, it should also enhance other nodes in the network.
 
-文｜金刻羽
-伦敦政治经济学院经济学副教授
+Written by Jin Keyu
+Associate Professor of Economics, London School of Economics and Political Science
 
-近代中国的封闭，使人们产生了中国不爱与外界联络、交往的错误印象。事实上，包容和开放是中国传统文化的重要内核。中国曾经长期是一个高度开放、善于吸收外来文化和思想、具有高度包容性的社会。
+Modern China's isolation has led to the misconception that China does not like to connect and interact with the outside world. In fact, inclusiveness and openness are core elements of traditional Chinese culture. China has long been a highly open society, adept at absorbing foreign cultures and ideas, and highly inclusive.
 
-　　西汉时期，张骞“凿空”西域后开辟了陆上丝绸之路，加强了汉代与西域的经济文化交流。佛教从印度传到中国，又通过丝绸之路从中西部地区传入中原。到东汉明帝时期公元67年，佛教得到官方的正式承认，最终在中国深深扎根。
+During the Western Han Dynasty, Zhang Qian's expedition to the Western Regions opened up the Silk Road, strengthening economic and cultural exchanges between the Han Dynasty and the Western Regions. Buddhism was introduced to China from India and spread to the Central Plains through the Silk Road. By the time of Emperor Ming of the Eastern Han Dynasty in 67 AD, Buddhism had received official recognition and eventually took root deeply in China.
 
-　　中国还擅长对外来文化的兼收并蓄，将其加以改造，变成中国的东西。在佛教传入前，生于本土的道教在中国盛行，儒家思想则是华夏文明的主旋律。佛教传入中国后，在一定程度上被汉化，出现了非常微妙的与儒家思想的融合。
+China is also skilled at integrating foreign cultures, transforming them into something uniquely Chinese. Before the introduction of Buddhism, Taoism, which originated in China, was prevalent, and Confucianism was the mainstay of Chinese civilization. After Buddhism was introduced to China, it was to some extent sinicized, resulting in a subtle integration with Confucianism.
 
-　　明清两代通常被认为是闭关锁国的朝代，是中国落后于世界列强之肇始。但是，这期间，对外联系和接受外界新事物的意识也并非全然没有。清代康熙皇帝通过虚心学习，支持德国传教士汤若望的历法，就是一个很好的例子。
+The Ming and Qing Dynasties are often considered periods of isolation, marking the beginning of China's lag behind Western powers. However, during this time, there was still some awareness of external connections and acceptance of new things. A good example is Emperor Kangxi of the Qing Dynasty, who supported the German missionary Johann Adam Schall von Bell's calendar through humble learning.
 
-　　在如今的网络时代，中国又应当如何定义自身身份，以便成为全球化下一阶段的赢家？
+In today's network era, how should China define its identity to become a winner in the next stage of globalization?
 
-　　在网络环境下，一国所处的节点（node）在整个网络中的中心度，也就是一国联结（connection）的广泛度，与其经济规模同样重要。卢森堡是一个小国，但却是欧洲乃至全球金融、资本网络的一个关键节点。卢森堡的资金流入和流出规模，超过任何其他欧洲大国。100多年前，卢森堡曾是欧洲最贫穷的国家，如今已是欧洲人均收入最高的国家之一。
+In a network environment, the centrality of a country's node in the entire network, that is, the extent of its connections, is as important as its economic scale. Luxembourg is a small country but a key node in Europe's and even the world's financial and capital networks. The scale of capital inflows and outflows in Luxembourg exceeds that of any other European country. Over 100 years ago, Luxembourg was the poorest country in Europe; today, it is one of the countries with the highest per capita income in Europe.
 
-　　中国可以通过建设现代化的基础设施，让技术和标准与全球更接近，缩短与其他经济体及其民众的距离，让中国成为全球网络中拥有联结最多的一个节点，也可称为全球网络的最佳联结点。
+China can become the node with the most connections in the global network, or the best-connected node in the global network, by building modern infrastructure, aligning its technology and standards with the world, and shortening the distance with other economies and their people.
 
-　　在网络体系中，主要玩家及彼此之间的联结都非常重要。通过保护主义的手段、孤立主义的心态与他国断绝联系，将自身置于网络外，只会降低自己在世界舞台上的影响力。
+In a network system, the main players and their connections are very important. Using protectionist measures and isolationist attitudes to cut off connections with other countries will only reduce one's influence on the world stage.
 
-　　中国应当做全球网络体系的领导者、保护者。这样的角色身份要求中国在自身发展过程中，让其他国家也得到发展，在自身通过联结变强的同时，让网络中的其他节点也得到强化，真正实现一荣俱荣。
+China should be the leader and protector of the global network system. This role requires China to help other countries develop while strengthening itself through connections, ensuring that other nodes in the network are also strengthened, achieving mutual prosperity.
 
-　　中国在推进大规模开放的同时，也需要考虑自身行为对其他经济体产生的溢出效应（spillover），以及其他经济体对中国的回溢效应（spillback）。任何一条大船扬帆前进，都会激起强大的尾流，旁边的船只都会遇上颠簸。
+While promoting large-scale openness, China also needs to consider the spillover effects of its actions on other economies and the spillback effects of other economies on China. Any large ship sailing forward will create a strong wake, causing turbulence for nearby ships.
 
-　　当一个大国对国际金融体系的风险敞口（exposure）扩大时，他国对大国经济的风险敞口也会扩大。中国的政策动向、资产价格或是汇率波动，都可能对全球市场产生巨大影响，近期比特币价格暴涨就是最新例子。
+When a major country's exposure to the international financial system increases, other countries' exposure to that major economy also increases. China's policy directions, asset prices, or exchange rate fluctuations can have a huge impact on global markets, as evidenced by the recent surge in Bitcoin prices.
 
-　　中国与其他国家和地区实现股市、债市互联互通、中国股票被纳入全球指数，更多的中国投资者、企业把海外资产作为其全球资产配置的一部分等种种进展，以及中国国内的各类动向，都会对海外市场、全球经济形势，乃至其他国家普通人的生计，产生更大的影响。
+The progress of connecting China's stock and bond markets with other countries, the inclusion of Chinese stocks in global indices, more Chinese investors and companies incorporating overseas assets into their global asset allocation, and various domestic developments in China will have a greater impact on overseas markets, the global economic situation, and even the livelihoods of ordinary people in other countries.
 
-　　美联储制定政策时，很少会考虑对他国的影响，即使其决策或多或少对他国造成冲击，也很少顾及。中国政策制定固然应继续以国内问题为中心，但也应适当考虑政策的溢出效应，包括对相对脆弱的新兴市场经济体的影响等。否则，中国的政策极有可能给自身带来波动风险。美国和欧洲实施大规模量化宽松期间，溢出效应和回溢效应都表现得非常明显。
+The Federal Reserve rarely considers the impact on other countries when making policies, even if its decisions cause shocks to other countries. China's policy-making should continue to focus on domestic issues but also consider the spillover effects of its policies, including the impact on relatively fragile emerging market economies. Otherwise, China's policies could bring volatility risks to itself. The spillover and spillback effects were very evident during the large-scale quantitative easing implemented by the US and Europe.
 
-　　今年是新中国成立70周年，也是布雷顿森林体系建立75周年。更大幅度的开放，需要和其他经济体更好的协调与合作。只有这样，经济、金融全球化才能发挥更好的作用。
+This year marks the 70th anniversary of the founding of the People's Republic of China and the 75th anniversary of the Bretton Woods system. Greater openness requires better coordination and cooperation with other economies. Only in this way can economic and financial globalization play a better role.
