@@ -16,14 +16,14 @@ menu_settings:
       url: "/videos/"
     - title: "About"
       url: "/about/"
-    - title: "Elements"
+    - title: "UnSocial"
       url: "/elements/"
 
 #-------------------------------
 # Hero Settings
 hero:
   enable: true
-  hero_title: We Wish Travel Therapy is covered by your health Insurance
+  hero_title: We Wish <br>"Travel Therapy"<br> covered in your health Insurance
   hero_description: Ditch the ordinary! 
 
 #-------------------------------
@@ -50,8 +50,8 @@ tags_section:
 
 # Social Links
 social:
-- {icon: "twitter", link: "https://x.com/KeyuJin"}
-- {icon: "chrome", link: "https://www.keyujin.com/"}
+- {icon: "instagram", link: "https://www.instagram.com/highwaysnomads"}
+- {icon: "youtube", link: "https://www.youtube.com/@highwaynomads"}
 
 # Example of adding a new link to the footer - {icon: "instagram", link: "https://instagram.com"}
 # Other icons can be found at https://ionicons.com/v4/

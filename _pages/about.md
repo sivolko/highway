@@ -2,19 +2,14 @@
 layout: page
 title: About
 permalink: /about/
-image: '/images/11.jpg'
+image: '/images/Designer.png'
 ---
 
-Highway Nomads is a culture, motor bike, Adventure and thrill.
+Highway Nomads: Where Asphalt Dreams Meet Untold Stories
+Ever felt that tug? The one that whispers of open horizons, the call of the unpaved road? That’s the spirit that fuels Highway Nomads. We're not just another travel website; we're a tribe, a band of wanderers chasing sunsets and collecting stories that rewrite the very definition of adventure. **We Wish Travel Therapy covered by your health Insurance**! - imagine a world where your wanderlust is prescribed!
+>
+ Forget the glossy brochures and pre-packaged tours. Here, Plans're made on the spot. We believe the best discoveries are the ones you stumble upon, the detours that lead to unexpected magic. We dare you to break free from the digital leash, to silence the GPS, and to trust your gut. After all, "Don't go where the path may lead, go instead where there is no path and leave a trail." - a trail etched in freedom and fuelled by adrenaline.
 
-## Biography
+We’re drawn to the raw, the unfiltered, the experiences that make your heart pound in your chest. Because let's be honest, If it scares you, it might be a good thing to try! We're peeling back the layers of this planet, seeking out the secret corners untouched by the Instagram hordes. In the Era of **social media, we don't follow trends and GPS.Explore hidden gems of planet earth and let them be hidden**. – treasures best kept in the vaults of our own memories.
 
-Dr. Keyu Jin is an associate professor of Economics at the London School of Economics, where she researches topics of globalization and the Chinese economy. She is from Beijing, China, and holds a B.A., M.A., and PhD from Harvard University. Multiple academic works on international macroeconomics and China have been published in top journals in Economics, such as the American Economic Review. She is a non-executive director at Richemont Group, the second largest luxury conglomerate, and is also an advisor to the China Banking Regulatory Commission for Fintech in China. Recently, she has focused on bridging Western capital and a new breed of fast-growing Chinese technology companies. She contributes op-ed pieces to the Financial Times and has a column in Project Syndicate as well as Caixin, the main economics and finance magazine in China. In the past, she has advised and consulted for the World Bank, the IMF, and the New York Fed. She has also had prior experience at Goldman Sachs, Morgan Stanley, JP Morgan, among other financial institutions. She was named a Young Global Leader by the World Economic Forum in 2014.
-
-* The text on this page is allowed to be modified and reused under the CC-BY-SA 3.0 license and the GNU Free Documentation License.
-
-* This website is operated by the Professor Keyu Jin Education Support Association and is not directly managed by Professor Jin herself, so it does not represent her personal stance.
-
-* The original purpose of the website is to republish Professor Jin's articles and share news, photos, videos, and other information related to her schedule and activities.
-
-* For those who want to understand Professor Jin's academic views or read her column articles and watch her speech videos, most of them do not have the opportunity to participate in person. The purpose of the website is to bridge this distance and ensure the accuracy of the information, avoiding confusion or misleading information from unknown sources.
+Highway Nomads is a symphony of cultures, a chorus of roaring engines, and a testament to the human spirit's insatiable hunger for the unknown. **Everyone has story**. And every mile we ride, every border we cross, adds another verse to our collective saga. So, ditch the map, embrace the chaos, and prepare to write your own legend. The open road awaits. Are you ready to answer the call?
