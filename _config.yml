@@ -7,12 +7,12 @@ url: "https://highwaynomads.org" # the base hostname & protocol for your site
 #-------------------------------
 # Build Settings
 markdown: kramdown
-permalink: /:title
+permalink: /:slug
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
 paginate: 12
-paginate_path: "/latest/page/:num"
+paginate_path: "/page/:num"
 #-------------------------------
 # Collections
 collections:
@@ -21,7 +21,8 @@ collections:
     permalink: /:name
   posts:
     output: true
-    permalink: /:slug
+    permalink: /post/:slug/
+
   authors:
     output: true
     permalink: /:name
