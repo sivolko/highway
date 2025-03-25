@@ -21,7 +21,7 @@ collections:
     permalink: /:name
   posts:
     output: true
-    permalink: /latest/:slug
+    permalink: /:slug
   authors:
     output: true
     permalink: /:name
