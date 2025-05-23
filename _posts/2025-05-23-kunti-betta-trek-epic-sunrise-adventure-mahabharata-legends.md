@@ -8,8 +8,6 @@ image: 'https://res.cloudinary.com/hugs4bugs/image/upload/v1742918683/highway_no
 video_embed: 
 tags: [trek, Karnataka, sunrise, mythology, Bangalore, weekend-getaway, adventure, Mahabharata, hills]
 featured: true
-canonical_url: https://highwaynomads.org/post/kunti-betta-trek-epic-sunrise-adventure-mahabharata-legends/
-meta_keywords: "Kunti Betta trek, Karnataka trekking, sunrise trek near Bangalore, Pandavapura trek, Thonnur Lake, Mahabharata trek, weekend trek from Bangalore, Karnataka adventure"
 ---
 
 *A Weekend Escape to Karnataka's Hidden Mythological Marvel*
