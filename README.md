@@ -3,7 +3,7 @@
 [![Jekyll](https://img.shields.io/badge/Jekyll-CC0000?style=for-the-badge&logo=jekyll&logoColor=white)](https://jekyllrb.com/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)](https://pages.github.com/)
 [![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-4CAF50?style=for-the-badge&logo=globe&logoColor=white)](https://keyujin.cn)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-4CAF50?style=for-the-badge&logo=globe&logoColor=white)](https://highwaynomads.org)
 
 > **A place for not just travel bloggers** - Where the road meets the soul, and every journey tells a story.
 
@@ -204,7 +204,7 @@ We welcome contributions from fellow travelers and developers! Here's how you ca
 
 Join our community of highway nomads and adventure seekers:
 
-- **Website**: [keyujin.cn](https://keyujin.cn)
+- **Website**: [highwaynomads.org](https://highwaynomads.org)
 - **GitHub**: [@sivolko](https://github.com/sivolko)
 - **YouTube**: Featured video content and vlogs
 - **Instagram**: Daily adventure updates and photography
@@ -233,6 +233,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 [![Star this repo](https://img.shields.io/github/stars/sivolko/highway?style=social)](https://github.com/sivolko/highway)
 [![Fork this repo](https://img.shields.io/github/forks/sivolko/highway?style=social)](https://github.com/sivolko/highway/fork)
-[![Follow on GitHub](https://img.shields.io/github/followers/sivolko?style=social)](https://github.com/sivolko)
+[![Follow on GitHub](https://img.shields.io/github/followers/sivolko?style=social)](https://github.com/sivolko/highway)
 
 </div>
