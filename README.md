@@ -45,6 +45,158 @@ This blog is built with modern web technologies to ensure fast, responsive, and 
 - **[Firebase Hosting](https://firebase.google.com/products/hosting)** - Fast and secure web hosting
 - **[GitHub Pages](https://pages.github.com/)** - Continuous deployment and version control
 
+## 🏗️ Project Architecture
+
+### System Overview
+
+```mermaid
+flowchart LR
+    A[📝 Content<br/>Markdown Posts] --> B[🔧 Jekyll<br/>Build Engine]
+    B --> C[📄 Static Site<br/>HTML/CSS/JS]
+    C --> D[🌐 Hosting<br/>GitHub Pages/Firebase]
+    D --> E[👥 Users<br/>Multi-Device Access]
+    
+    F[☁️ External APIs<br/>Cloudinary, YouTube] --> C
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5  
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+    style E fill:#f1f8e9
+    style F fill:#fce4ec
+```
+
+### Detailed Architecture
+
+```mermaid
+graph TB
+    subgraph "Content Management"
+        A[📝 _posts/] --> B[Markdown Files]
+        C[👥 _authors/] --> D[Author Profiles]
+        E[🎨 _sass/] --> F[SCSS Stylesheets]
+        G[📄 _pages/] --> H[Static Pages]
+    end
+
+    subgraph "Jekyll Engine"
+        I[🔧 Jekyll Build Process]
+        J[💧 Liquid Templates]
+        K[📋 _layouts/]
+        L[🧩 _includes/]
+        M[⚙️ _config.yml]
+    end
+
+    subgraph "Generated Output"
+        N[📁 _site/]
+        O[📄 Static HTML]
+        P[🎨 Compiled CSS]
+        Q[📱 Responsive Pages]
+        R[🔍 SEO Optimized]
+    end
+
+    subgraph "Hosting & Deployment"
+        S[🐙 GitHub Pages]
+        T[🔥 Firebase Hosting]
+        U[🌐 CDN Delivery]
+    end
+
+    subgraph "External Services"
+        V[☁️ Cloudinary]
+        W[📊 Google Analytics]
+        X[🎥 YouTube Embeds]
+        Y[🔍 Search Index]
+    end
+
+    subgraph "User Experience"
+        Z[💻 Desktop]
+        AA[📱 Mobile]
+        BB[🎯 Multi-Device]
+        CC[⚡ Fast Loading]
+    end
+
+    %% Content Flow
+    A --> I
+    C --> I
+    E --> I
+    G --> I
+    M --> I
+
+    %% Template Processing
+    I --> J
+    K --> J
+    L --> J
+
+    %% Build Output
+    J --> N
+    N --> O
+    N --> P
+    N --> Q
+    N --> R
+
+    %% Deployment
+    O --> S
+    O --> T
+    T --> U
+
+    %% External Integration
+    V --> Q
+    W --> R
+    X --> O
+    Y --> R
+
+    %% User Access
+    U --> Z
+    U --> AA
+    S --> BB
+    T --> CC
+
+    %% Styling
+    classDef contentNodes fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef jekyllNodes fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef outputNodes fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef hostingNodes fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef externalNodes fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef userNodes fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
+
+    class A,B,C,D,E,F,G,H contentNodes
+    class I,J,K,L,M jekyllNodes
+    class N,O,P,Q,R outputNodes
+    class S,T,U hostingNodes
+    class V,W,X,Y externalNodes
+    class Z,AA,BB,CC userNodes
+```
+
+### 📐 Architecture Overview
+
+The Highway Nomads project follows a modern static site generation architecture with the following key components:
+
+#### **Content Layer**
+- **Posts (`_posts/`)**: Markdown files for blog posts with YAML front matter
+- **Authors (`_authors/`)**: Individual author profiles and biographical information  
+- **Pages (`_pages/`)**: Static pages like About, Contact, Videos
+- **Styles (`_sass/`)**: Modular SCSS stylesheets organized by component
+
+#### **Build Layer**
+- **Jekyll Engine**: Processes Markdown, Liquid templates, and Sass into static HTML/CSS
+- **Liquid Templates**: Dynamic template language for data-driven content
+- **Layouts (`_layouts/`)**: Page templates (post, page, author, default)
+- **Includes (`_includes/`)**: Reusable template components (header, footer, widgets)
+
+#### **Output Layer**
+- **Static Site (`_site/`)**: Generated HTML, CSS, JS, and optimized assets
+- **SEO Optimization**: Structured data, meta tags, sitemaps
+- **Responsive Design**: Mobile-first approach with optimized performance
+
+#### **Deployment Layer**
+- **GitHub Pages**: Automatic deployment from main branch
+- **Firebase Hosting**: Alternative hosting with global CDN
+- **CI/CD Pipeline**: Automated builds and deployments via GitHub Actions
+
+#### **Integration Layer**
+- **Cloudinary**: Image optimization and responsive delivery
+- **YouTube**: Embedded video content and vlogs
+- **Google Analytics**: Traffic insights and user behavior tracking
+- **Search**: Client-side search functionality for content discovery
+
 ### 🎨 **Features**
 - ✅ Responsive design optimized for all devices
 - ✅ SEO-optimized with proper meta tags and sitemap
