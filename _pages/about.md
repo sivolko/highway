@@ -5,11 +5,58 @@ permalink: /about/
 image: '/images/Designer.png'
 ---
 
-Highway Nomads: Where Asphalt Dreams Meet Untold Stories
-Ever felt that tug? The one that whispers of open horizons, the call of the unpaved road? That’s the spirit that fuels Highway Nomads. We're not just another travel website; we're a tribe, a band of wanderers chasing sunsets and collecting stories that rewrite the very definition of adventure. **We Wish Travel Therapy covered by your health Insurance**! - imagine a world where your wanderlust is prescribed!
->
- Forget the glossy brochures and pre-packaged tours. Here, Plans're made on the spot. We believe the best discoveries are the ones you stumble upon, the detours that lead to unexpected magic. We dare you to break free from the digital leash, to silence the GPS, and to trust your gut. After all, "Don't go where the path may lead, go instead where there is no path and leave a trail." - a trail etched in freedom and fuelled by adrenaline.
+## The short version
 
-We’re drawn to the raw, the unfiltered, the experiences that make your heart pound in your chest. Because let's be honest, If it scares you, it might be a good thing to try! We're peeling back the layers of this planet, seeking out the secret corners untouched by the Instagram hordes. In the Era of **social media, we don't follow trends and GPS.Explore hidden gems of planet earth and let them be hidden**. – treasures best kept in the vaults of our own memories.
+I'm Shubhendu. I live in Bengaluru, spend my weekdays hunting cloud misconfigurations, and spend my weekends getting lost on roads that don't exist on Google Maps. 
 
-Highway Nomads is a symphony of cultures, a chorus of roaring engines, and a testament to the human spirit's insatiable hunger for the unknown. **Everyone has story**. And every mile we ride, every border we cross, adds another verse to our collective saga. So, ditch the map, embrace the chaos, and prepare to write your own legend. The open road awaits. Are you ready to answer the call?
+This blog is the thing that happens in between.
+
+---
+
+## How this started
+
+It wasn't some grand epiphany. No solo trek through the Himalayas that changed my life. No gap year. Nothing cinematic.
+
+It was a Saturday morning in 2023 when I had zero plans, a full tank, and a vague memory that someone once mentioned a fort near Krishnagiri. I typed the name into Maps, saw it was 90 kilometres away, and just — left. No itinerary. No hotel booked. Just the Himalayan 450 and a half-charged phone.
+
+I reached the fort by noon, climbed walls that Tipu Sultan's army probably argued over, ate lunch at a dhaba where the owner spoke zero English and I spoke zero Tamil, and we somehow had a 40-minute conversation anyway. I got home at 8 PM with mud on my boots and the specific kind of tiredness that doesn't feel like exhaustion — it feels like something actually happened today.
+
+I've been chasing that feeling ever since.
+
+---
+
+## What unplotted actually is
+
+Not a travel guide. Not a "top 10 places near Bengaluru" list generator. Not an Instagram feed with captions about finding yourself.
+
+It's closer to a logbook. The kind you'd keep in a jacket pocket — messy, specific, occasionally wrong about distances, but honest about what a place actually felt like at 6 AM when the fog was still sitting on the valley and you hadn't had chai yet.
+
+I write about the rides I do on weekends — mostly Karnataka, sometimes further. The Agumbe Ghats on a wet day in July when the road turns into a river and you're simultaneously terrified and completely alive. The Kunti Betta sunrise that required a 2 AM alarm and was, against all reasonable expectations, worth it. The Bangalore bylanes that nobody visits because they're not photogenic enough, but they've been around longer than the city's tech parks and have better stories.
+
+Some of it is practical — routes, fuel stops, where not to stop. Most of it is just what I noticed.
+
+---
+
+## The bike
+
+Royal Enfield Himalayan 450. Silver. Takes corners better than it has any right to, runs on ambition and premium petrol, and has survived more bad road decisions than I should probably admit here.
+
+---
+
+## The job
+
+Cloud security engineer. Microsoft Sentinel, Docker, threat hunting, the whole thing. I write about that over at [hugs4bugs.me](https://hugs4bugs.me) — if you're into KQL queries at 11 PM and container misconfigurations, that's the place.
+
+This blog is the other part of my brain. The one that doesn't think in logs and YAML.
+
+---
+
+## On following and being followed
+
+I'm on [Instagram](https://www.instagram.com/highwaysnomads) and [YouTube](https://www.youtube.com/@highwaynomads) if you want the visual version. The blog is for the parts that don't fit in a reel.
+
+If you've found a route I should ride, a dhaba I've missed, or a trail that's worth the knee pain — drop a message on the [contact page](/contact/). I read everything, reply slowly, and take suggestions seriously.
+
+---
+
+*unplotted — because the best roads aren't on the map yet.*
