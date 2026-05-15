@@ -1,10 +1,11 @@
 #-------------------------------
 # Site Settings
-title: Highway Nomads
-description: This is a highway Nomads blog
-logo: "/images/logo1.png" # You can add your own logo. For example "/images/logo.svg".
-logo_dark: "/images/logo2.png"
-color_scheme: auto # You can choose three modes: auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themselves.
+title: unplotted.online
+description: Road stories, travel guides, and adventures for the restless soul. Updated weekly.
+footer_description: Road stories, travel guides, and off-beat adventures for the restless soul.
+logo:      # cleared — text logo used instead
+logo_dark: # cleared — text logo used instead
+color_scheme: auto
 
 #-------------------------------
 # Navigation Settings
@@ -16,22 +17,22 @@ menu_settings:
       url: "/videos/"
     - title: "About"
       url: "/about/"
-    - title: "UnSocial"
-      url: "/elements/"
+    - title: "Contact"
+      url: "/contact/"
 
 #-------------------------------
 # Hero Settings
 hero:
   enable: true
   hero_title: We Wish <br>"Travel Therapy"<br> covered in your health Insurance
-  hero_description: Ditch the ordinary! 
+  hero_description: Ditch the ordinary!
 
 #-------------------------------
 # Tags Section Settings
 tags_section:
   enable: true
-  number_posts: 3 # To control how many posts to show under each tag section, set the value to a number. Three is the default.
-  number_columns: 3 # You can specify the number of columns from 1-4 for large screen resolution. By default, the theme uses a three-column grid.
+  number_posts: 3
+  number_columns: 3
   tags:
     - tag: "A Day Trip"
     - tag: "100 KM"
@@ -43,32 +44,22 @@ tags_section:
     - tag: "Hiking"
     - tag: "Roadtrip"
 
-# You can add many tag sections to the homepage; each section will show the recent posts by the tag.
-
 #-------------------------------
 # Footer Settings
-
-# Social Links
 social:
-- {icon: "instagram", link: "https://www.instagram.com/highwaysnomads"}
-- {icon: "youtube", link: "https://www.youtube.com/@highwaynomads"}
-
-# Example of adding a new link to the footer - {icon: "instagram", link: "https://instagram.com"}
-# Other icons can be found at https://ionicons.com/v4/
+  - {icon: "instagram", link: "https://www.instagram.com/highwaysnomads"}
+  - {icon: "youtube",   link: "https://www.youtube.com/@highwaynomads"}
 
 #-------------------------------
 # Contact Settings
 contact:
-  email: your@email.com # Add your form_id
-  description: Highway Nomads comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
-
-# NOTE
-# Highway Nomads theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
+  email: shubhendushubham98@gmail.com
+  description: Got a trail tip, collab idea, or just want to say hi? Drop a message.
 
 #-------------------------------
 # Comment Section (Disqus)
-disqus_identifier: anvod-studio-test # Add your shortname for Disqus Comment. For example anvod-studio-test
+disqus_identifier: highwaynomads
 
 #-------------------------------
 # Google Analytics
-google_analytics: # Add your GA Tracking Id
+google_analytics: G-XXXXXXXXXX
