@@ -7,7 +7,7 @@ image: '/images/Designer.png'
 
 ## The short version
 
-I'm Shubhendu. I live in Bengaluru, spend my weekdays hunting cloud misconfigurations, and spend my weekends getting lost on roads that don't exist on Google Maps. 
+I'm Shubhendu. I live in Bengaluru, spend my weekdays making sure hospitals don't get ransomwared and banks don't get breached, and spend my weekends getting lost on roads that don't exist on Google Maps.
 
 This blog is the thing that happens in between.
 
@@ -45,9 +45,13 @@ Royal Enfield Himalayan 450. Silver. Takes corners better than it has any right 
 
 ## The job
 
-Cloud security engineer. Microsoft Sentinel, Docker, threat hunting, the whole thing. I write about that over at [hugs4bugs.me](https://hugs4bugs.me) — if you're into KQL queries at 11 PM and container misconfigurations, that's the place.
+Security Architect. I help organisations in Healthcare, BFSI, and Energy figure out how to not become a headline — the bad kind. The frameworks I live in: NIST, HIPAA, DORA, MCSB v2, CIS, SOC 2. The things I actually do: threat modelling, DevSecOps, security architecture design from the ground up.
 
-This blog is the other part of my brain. The one that doesn't think in logs and YAML.
+Also a Docker Captain 🐳, TOGAF & SABSA Practitioner, and six-times cloud certified — because apparently one certification is never enough and I have a problem.
+
+I write about all of that over at [hugs4bugs.me](https://hugs4bugs.me). If you're into architecture reviews at 11 PM, container hardening, or why your zero-trust rollout is probably not zero-trust — that's the place.
+
+This blog is the other part of my brain. The one that doesn't think in threat models and compliance matrices.
 
 ---
 
