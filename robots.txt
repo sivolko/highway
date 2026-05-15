@@ -1,0 +1,38 @@
+# General crawlers
+User-agent: *
+Allow: /
+Disallow: /tags/
+Disallow: /page/
+Disallow: /admin/
+Disallow: /cms/
+
+# AI crawlers — explicitly allowed to index content
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap
+Sitemap: https://unplotted.online/sitemap.xml
