@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "highwaynomads-dcc90"
+  },
+  "targets": {
+    "highwaynomads-dcc90": {
+      "hosting": {
+        "blog": ["highwaynomads-dcc90"],
+        "cms": ["highway-nomads-cms"]
+      }
+    }
   }
 }
