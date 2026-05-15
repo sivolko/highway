@@ -1,10 +1,10 @@
 #-------------------------------
 # Site Settings
-title: unplotted.online
+title: unplotted
 description: Road stories, travel guides, and adventures for the restless soul. Updated weekly.
 footer_description: Road stories, travel guides, and off-beat adventures for the restless soul.
-logo:      # cleared — text logo used instead
-logo_dark: # cleared — text logo used instead
+logo:
+logo_dark:
 color_scheme: auto
 
 #-------------------------------
