@@ -3,7 +3,7 @@ title: "Highway Nomads"
 name:  "Highway Nomads"
 description: "Road stories, travel guides, and adventures for the restless soul. Updated weekly."
 baseurl: ""
-url: "https://highwaynomads.org"
+url: "https://unplotted.online"
 language: en
 timezone: UTC
 
@@ -11,7 +11,7 @@ timezone: UTC
 author:
   name: Shubhendu Shubham
   twitter: myselfshubhendu
-  url: https://highwaynomads.org/about
+  url: https://unplotted.online/about
 
 social:
   name: Shubhendu Shubham
