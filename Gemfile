@@ -1,7 +1,13 @@
-source 'https://rubygems.org'
-gem "bundler"
-gem "jekyll", '3.9.5'
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
 gem "jekyll-paginate"
 gem "jekyll-sitemap"
-gem "kramdown-parser-gfm"
-gem "webrick", "~> 1.8"
+gem "jekyll-feed"
+gem "webrick"
+
+group :jekyll_plugins do
+  gem "jekyll-paginate"
+  gem "jekyll-sitemap"
+  gem "jekyll-feed"
+end
