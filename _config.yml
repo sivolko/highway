@@ -1,6 +1,6 @@
 # ── Site ──────────────────────────────────────────────
-title: "Highway Nomads"
-name:  "Highway Nomads"
+title: "unplotted"
+name:  "unplotted"
 description: "Road stories, travel guides, and adventures for the restless soul. Updated weekly."
 baseurl: ""
 url: "https://unplotted.online"
@@ -45,7 +45,7 @@ menu:
 # ── Build ─────────────────────────────────────────────
 markdown:   kramdown
 highlighter: rouge
-permalink:  /:slug        # original — keeps existing URLs intact
+permalink:  /:slug
 
 paginate:      12
 paginate_path: "/page/:num"
@@ -113,9 +113,9 @@ comments:
   giscus:
     enabled: true
     repo: "sivolko/highway"
-    repo-id: ""          # fill from giscus.app
+    repo-id: ""
     category: "General"
-    category-id: ""      # fill from giscus.app
+    category-id: ""
     mapping: "title"
     strict: "1"
     reactions-enabled: "1"
