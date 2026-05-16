@@ -106,7 +106,7 @@ sass:
   style: compressed
 
 # ── Analytics ─────────────────────────────────────────
-google_analytics: G-XXXXXXXXXX   # replace with real GA4 ID
+google_analytics: G-M51SH5Y4VY
 
 # ── Comments (Giscus) ────────────────────────────────
 comments:
