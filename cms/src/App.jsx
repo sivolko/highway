@@ -273,12 +273,23 @@ export default function CMS() {
         @keyframes spin { to { transform: rotate(360deg); } }
         .spinner { width: 14px; height: 14px; border: 2px solid #e2e8f0; border-top-color: #111; border-radius: 50%; animation: spin 0.6s linear infinite; }
         .md-preview h1 { font-size: 24px; margin: 1.2em 0 0.5em; font-weight: 600; }
-        .md-preview h2 { font-size: 20px; margin: 1em 0 0.4em; font-weight: 600; }
+        .md-preview h2 { font-size: 20px; margin: 1em 0 0.4em; font-weight: 600; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
         .md-preview h3 { font-size: 17px; margin: 0.8em 0 0.3em; font-weight: 600; }
         .md-preview p { margin: 0.8em 0; line-height: 1.75; }
         .md-preview code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 13px; }
         .md-preview ul, .md-preview ol { padding-left: 1.5em; margin: 0.5em 0; line-height: 1.75; }
         .md-preview a { color: #ff6b35; }
+        .md-preview hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.5em 0; }
+        .md-preview blockquote { border-left: 3px solid #ff6b35; margin: 1em 0; padding: 8px 16px; background: #fff7ed; border-radius: 0 6px 6px 0; color: #555; font-style: italic; }
+        .md-preview table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .md-preview thead tr { background: #111; color: #fff; }
+        .md-preview thead th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+        .md-preview tbody tr { border-bottom: 1px solid #f1f5f9; }
+        .md-preview tbody tr:last-child { border-bottom: none; }
+        .md-preview tbody tr:nth-child(even) { background: #f8f9fa; }
+        .md-preview tbody td { padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+        .md-preview .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .md-preview .table-wrap table { margin: 0; border: none; border-radius: 0; }
         .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
       `}</style>
 
@@ -471,6 +482,16 @@ function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publi
     setTimeout(() => ta.focus(), 0);
   };
 
+  const insertTable = () => {
+    const ta = textareaRef.current;
+    if (!ta) return;
+    const pos = ta.selectionStart;
+    const table = "\n| Column 1 | Column 2 | Column 3 |\n|----------|----------|----------|\n| Cell     | Cell     | Cell     |\n| Cell     | Cell     | Cell     |\n";
+    const newVal = fields.body.slice(0, pos) + table + fields.body.slice(pos);
+    set("body")({ target: { value: newVal } });
+    setTimeout(() => ta.focus(), 0);
+  };
+
   const filteredLangs = LANGUAGES.filter(l => l.includes(langSearch.toLowerCase()));
 
   return (
@@ -517,6 +538,11 @@ function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publi
                 {label}
               </button>
             ))}
+            {/* Table insert button */}
+            <button title="Insert table" onClick={insertTable}
+              style={{ padding: "4px 9px", borderRadius: 6, border: "1px solid #e2e8f0", background: "#fff", cursor: "pointer", fontSize: 12, color: "#555" }}>
+              ⊞
+            </button>
             <div style={{ position: "relative" }}>
               <button title="Insert code block" onClick={() => setShowLangPicker(p => !p)}
                 style={{ padding: "4px 10px", borderRadius: 6, border: "1px solid #e2e8f0", background: showLangPicker ? "#111" : "#fff", color: showLangPicker ? "#fff" : "#555", cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono', monospace", display: "flex", alignItems: "center", gap: 5 }}>
@@ -627,6 +653,44 @@ function Field({ label, value, onChange, placeholder, textarea, mono }) {
   );
 }
 
+// ── Markdown table parser ─────────────────────────────────────────────────────
+function parseTable(block) {
+  const lines = block.trim().split("\n").filter(Boolean);
+  if (lines.length < 2) return null;
+
+  const parseRow = (line) =>
+    line.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+
+  const isSeparator = (line) => /^\|?[\s\-:|]+\|/.test(line);
+
+  // Find separator row
+  const sepIdx = lines.findIndex(isSeparator);
+  if (sepIdx === -1 || sepIdx === 0) return null;
+
+  const headers = parseRow(lines[0]);
+  const alignments = parseRow(lines[sepIdx]).map(s => {
+    if (s.startsWith(":") && s.endsWith(":")) return "center";
+    if (s.endsWith(":")) return "right";
+    return "left";
+  });
+  const bodyLines = lines.slice(sepIdx + 1).filter(l => !isSeparator(l));
+  const rows = bodyLines.map(parseRow);
+
+  const thCells = headers.map((h, i) =>
+    `<th style="padding:10px 14px;text-align:${alignments[i] || "left"};font-weight:600;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;">${h}</th>`
+  ).join("");
+
+  const trRows = rows.map((cells, ri) => {
+    const tds = cells.map((c, i) =>
+      `<td style="padding:10px 14px;text-align:${alignments[i] || "left"};vertical-align:top;line-height:1.5;">${c}</td>`
+    ).join("");
+    const bg = ri % 2 === 1 ? "background:#f8f9fa;" : "";
+    return `<tr style="${bg}border-bottom:1px solid #f1f5f9;">${tds}</tr>`;
+  }).join("");
+
+  return `<div class="table-wrap"><table style="width:100%;border-collapse:collapse;font-size:14px;"><thead><tr style="background:#111;color:#fff;">${thCells}</tr></thead><tbody>${trRows}</tbody></table></div>`;
+}
+
 function MarkdownPreview({ content }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -649,34 +713,54 @@ function MarkdownPreview({ content }) {
     }
   }, [content]);
 
+  // Step 1 — extract fenced code blocks
   const codeBlocks = [];
-  const withPlaceholders = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
+  let working = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
     const i = codeBlocks.length;
     codeBlocks.push({ lang: lang || "plaintext", code: code.trim() });
     return `%%CODE_BLOCK_${i}%%`;
   });
 
-  let html = withPlaceholders
+  // Step 2 — extract markdown tables (must happen before paragraph splitting)
+  const tableBlocks = [];
+  working = working.replace(/(?:(?:^\|.+\|\n){2,})/gm, (match) => {
+    const html = parseTable(match);
+    if (!html) return match;
+    const i = tableBlocks.length;
+    tableBlocks.push(html);
+    return `\n%%TABLE_BLOCK_${i}%%\n`;
+  });
+
+  // Step 3 — convert remaining markdown to HTML
+  let html = working
+    .replace(/^---$/gm, "<hr>")
     .replace(/^### (.+)$/gm, "<h3>$1</h3>")
     .replace(/^## (.+)$/gm, "<h2>$1</h2>")
     .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    .replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;" />')
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
-    .replace(/^- (.+)$/gm, "<li>$1</li>")
-    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/^[-*] (.+)$/gm, "<li>$1</li>")
+    .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
     .replace(/\n\n+/g, "</p><p>");
 
+  // Step 4 — restore code blocks
   codeBlocks.forEach(({ lang, code }, i) => {
     const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const block = `<div style="margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid #2d2d2d;"><div style="background:#1a1a2e;padding:8px 16px;"><span style="font-size:11px;color:#ff6b35;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;font-weight:600">${lang}</span></div><pre style="margin:0;padding:20px;background:#0d1117;overflow-x:auto;"><code class="language-${lang}" style="background:transparent;font-family:'DM Mono',monospace;font-size:13px;line-height:1.7;color:#c9d1d9;">${escaped}</code></pre></div>`;
     html = html.replace(`%%CODE_BLOCK_${i}%%`, block);
   });
 
+  // Step 5 — restore table blocks
+  tableBlocks.forEach((tableHtml, i) => {
+    html = html.replace(`%%TABLE_BLOCK_${i}%%`, tableHtml);
+  });
+
   return (
-    <div ref={ref} className="md-preview" style={{ padding: "28px 32px", fontSize: 15, color: "#1e293b", maxWidth: 720 }}
+    <div ref={ref} className="md-preview" style={{ padding: "28px 32px", fontSize: 15, color: "#1e293b", maxWidth: 760 }}
       dangerouslySetInnerHTML={{ __html: `<p>${html}</p>` }} />
   );
 }
