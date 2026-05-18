@@ -1,4 +1,4 @@
-{% assign featured = site.posts | where: "featured", true %}
+{% assign featured = site.posts | where_exp: "post", "post.featured == true" %}
 
 {% if featured.size > 0 %}
 <!-- begin featured-post -->
