@@ -17,10 +17,11 @@ const filenameFromTitle = (title, date) => {
   return `${d}-${slugify(title || "untitled")}.md`;
 };
 
+// ── Change 1: featured added to buildFrontmatter ──────────────────────────────
 const buildFrontmatter = (fields) => {
   const tags = fields.tags.split(",").map((t) => t.trim()).filter(Boolean);
   const tagLines = tags.map((t) => `  - ${t}`).join("\n");
-  return `---\nlayout: post\ntitle: "${fields.title}"\ndate: ${fields.date}\ncategory: ${fields.category}\ntags:\n${tagLines}\nsubtitle: "${fields.subtitle}"\ndescription: "${fields.description}"\nimage: ${fields.image}\noptimized_image: ${fields.optimized_image || fields.image}\nauthor: ${fields.author}\n---\n\n${fields.body}`;
+  return `---\nlayout: post\ntitle: "${fields.title}"\ndate: ${fields.date}\ncategory: ${fields.category}\nfeatured: ${fields.featured ? "true" : "false"}\ntags:\n${tagLines}\nsubtitle: "${fields.subtitle}"\ndescription: "${fields.description}"\nimage: ${fields.image}\noptimized_image: ${fields.optimized_image || fields.image}\nauthor: ${fields.author}\n---\n\n${fields.body}`;
 };
 
 const GH = (token) => ({
@@ -66,9 +67,11 @@ export default function CMS() {
   const [deleting, setDeleting] = useState(null);
   const [autoSaved, setAutoSaved] = useState(false);
 
+  // ── Change 2: featured: false added to emptyFields ────────────────────────
   const emptyFields = {
     title: "", subtitle: "", date: todayISO(), category: "road-trip", tags: "",
-    description: "", image: "", optimized_image: "", author: config.author, body: "",
+    description: "", image: "", optimized_image: "", author: config.author,
+    featured: false, body: "",
   };
   const [fields, setFields] = useState(emptyFields);
 
@@ -107,6 +110,7 @@ export default function CMS() {
     setActiveTab("content"); setAutoSaved(!!saved); setView(VIEWS.EDITOR);
   };
 
+  // ── Change 3: parse featured when opening a published post ────────────────
   const openPost = async (post) => {
     setStatus({ type: "info", msg: "Loading post..." });
     try {
@@ -119,13 +123,15 @@ export default function CMS() {
         const parse = (k) => { const m = raw.match(new RegExp(`^${k}:\\s*(.+)$`, "m")); return m ? m[1].replace(/^["']|["']$/g, "").trim() : ""; };
         const tagsMatch = raw.match(/^tags:\n((?:\s+-\s*.+\n?)*)/m);
         const tags = tagsMatch ? (tagsMatch[1].match(/-\s*(.+)/g)?.map(t => t.replace(/^-\s*/, "").trim()).join(", ") || "") : "";
-        setFields({ title: parse("title"), subtitle: parse("subtitle"), date: parse("date"), category: parse("category"), tags, description: parse("description"), image: parse("image"), optimized_image: parse("optimized_image"), author: parse("author"), body });
+        const featured = parse("featured") === "true";
+        setFields({ title: parse("title"), subtitle: parse("subtitle"), date: parse("date"), category: parse("category"), tags, description: parse("description"), image: parse("image"), optimized_image: parse("optimized_image"), author: parse("author"), featured, body });
       }
       setEditPost({ name: post.name, sha: data.sha });
       setStatus(null); setPreviewMode(false); setActiveTab("content"); setAutoSaved(false); setView(VIEWS.EDITOR);
     } catch (e) { setStatus({ type: "error", msg: e.message }); }
   };
 
+  // ── Change 4: parse featured when opening a draft ─────────────────────────
   const openDraft = async (pr) => {
     setStatus({ type: "info", msg: "Loading draft..." });
     try {
@@ -141,7 +147,8 @@ export default function CMS() {
         const parse = (k) => { const m = raw.match(new RegExp(`^${k}:\\s*(.+)$`, "m")); return m ? m[1].replace(/^["']|["']$/g, "").trim() : ""; };
         const tagsMatch = raw.match(/^tags:\n((?:\s+-\s*.+\n?)*)/m);
         const tags = tagsMatch ? (tagsMatch[1].match(/-\s*(.+)/g)?.map(t => t.replace(/^-\s*/, "").trim()).join(", ") || "") : "";
-        setFields({ title: parse("title"), subtitle: parse("subtitle"), date: parse("date"), category: parse("category"), tags, description: parse("description"), image: parse("image"), optimized_image: parse("optimized_image"), author: parse("author"), body });
+        const featured = parse("featured") === "true";
+        setFields({ title: parse("title"), subtitle: parse("subtitle"), date: parse("date"), category: parse("category"), tags, description: parse("description"), image: parse("image"), optimized_image: parse("optimized_image"), author: parse("author"), featured, body });
       }
       setEditPost({ name: postFile.filename.replace("_posts/", ""), sha: data.sha, prNumber: pr.number, branch: pr.head.ref, isDraft: true });
       setStatus(null); setPreviewMode(false); setActiveTab("content"); setAutoSaved(false); setView(VIEWS.EDITOR);
@@ -245,6 +252,7 @@ export default function CMS() {
   };
 
   const set = (k) => (e) => setFields(f => ({ ...f, [k]: e.target.value }));
+  const toggle = (k) => () => setFields(f => ({ ...f, [k]: !f[k] }));
 
   return (
     <div style={{ minHeight: "100vh", background: "#f8f9fa", fontFamily: "'DM Sans', system-ui, sans-serif" }}>
@@ -291,6 +299,12 @@ export default function CMS() {
         .md-preview .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid #e2e8f0; }
         .md-preview .table-wrap table { margin: 0; border: none; border-radius: 0; }
         .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #e2e8f0; border-radius: 24px; transition: 0.2s; }
+        .toggle-slider:before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+        input:checked + .toggle-slider { background: #22c55e; }
+        input:checked + .toggle-slider:before { transform: translateX(20px); }
       `}</style>
 
       {view === VIEWS.SETUP && <SetupScreen config={config} onSave={(c) => { saveConfig(c); setView(VIEWS.LIST); }} />}
@@ -322,7 +336,7 @@ export default function CMS() {
               <PostsList posts={posts} drafts={drafts} loading={loadingPosts} onOpen={openPost} onOpenDraft={openDraft} onRefresh={fetchAll} onNew={newPost} onDelete={deletePost} onPublishDraft={publishDraft} onDeleteDraft={deleteDraft} deleting={deleting} status={status} activeListTab={activeListTab} setActiveListTab={setActiveListTab} />
             )}
             {view === VIEWS.EDITOR && (
-              <EditorView fields={fields} set={set} previewMode={previewMode} setPreviewMode={setPreviewMode} onPublish={publish} publishing={publishing} status={status} editPost={editPost} onBack={() => setView(VIEWS.LIST)} activeTab={activeTab} setActiveTab={setActiveTab} autoSaved={autoSaved} />
+              <EditorView fields={fields} set={set} toggle={toggle} previewMode={previewMode} setPreviewMode={setPreviewMode} onPublish={publish} publishing={publishing} status={status} editPost={editPost} onBack={() => setView(VIEWS.LIST)} activeTab={activeTab} setActiveTab={setActiveTab} autoSaved={autoSaved} />
             )}
           </main>
         </div>
@@ -455,7 +469,7 @@ function EmptyState({ text }) {
 
 const LANGUAGES = ["bash","c","cpp","css","diff","docker","go","graphql","html","java","javascript","json","kotlin","kql","markdown","python","ruby","rust","shell","sql","swift","typescript","yaml"];
 
-function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publishing, status, editPost, onBack, activeTab, setActiveTab, autoSaved }) {
+function EditorView({ fields, set, toggle, previewMode, setPreviewMode, onPublish, publishing, status, editPost, onBack, activeTab, setActiveTab, autoSaved }) {
   const textareaRef = useRef(null);
   const [showLangPicker, setShowLangPicker] = useState(false);
   const [langSearch, setLangSearch] = useState("");
@@ -538,7 +552,6 @@ function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publi
                 {label}
               </button>
             ))}
-            {/* Table insert button */}
             <button title="Insert table" onClick={insertTable}
               style={{ padding: "4px 9px", borderRadius: 6, border: "1px solid #e2e8f0", background: "#fff", cursor: "pointer", fontSize: 12, color: "#555" }}>
               ⊞
@@ -588,7 +601,7 @@ function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publi
             value={fields.body} onChange={set("body")} />
         )}
         {activeTab === "content" && previewMode && <MarkdownPreview content={fields.body} />}
-        {activeTab === "meta" && <MetaPanel fields={fields} set={set} />}
+        {activeTab === "meta" && <MetaPanel fields={fields} set={set} toggle={toggle} />}
       </div>
       <div style={{ background: "#fff", borderTop: "1px solid #e2e8f0", padding: "5px 20px", display: "flex", alignItems: "center", gap: 20, flexShrink: 0 }}>
         <span style={{ fontSize: 11, color: "#ccc", fontFamily: "'DM Mono', monospace" }}>
@@ -603,7 +616,8 @@ function EditorView({ fields, set, previewMode, setPreviewMode, onPublish, publi
 
 const CATEGORIES = ["road-trip","adventure","destinations","gear","tips","stories"];
 
-function MetaPanel({ fields, set }) {
+// ── Change 5: featured toggle in MetaPanel ────────────────────────────────────
+function MetaPanel({ fields, set, toggle }) {
   return (
     <div style={{ padding: 28, maxWidth: 680 }}>
       <div style={{ display: "grid", gap: 16 }}>
@@ -620,9 +634,26 @@ function MetaPanel({ fields, set }) {
             </select>
           </div>
         </div>
+
+        {/* Featured toggle */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", background: fields.featured ? "#f0fdf4" : "#f8f9fa", border: `1px solid ${fields.featured ? "#86efac" : "#e2e8f0"}`, borderRadius: 10, transition: "all 0.2s" }}>
+          <div>
+            <div style={{ fontWeight: 600, fontSize: 13, color: fields.featured ? "#15803d" : "#111" }}>
+              {fields.featured ? "⭐ Featured post" : "Featured post"}
+            </div>
+            <div style={{ fontSize: 12, color: "#888", marginTop: 2 }}>
+              Shows in the homepage featured section
+            </div>
+          </div>
+          <label className="toggle-switch">
+            <input type="checkbox" checked={!!fields.featured} onChange={toggle("featured")} />
+            <span className="toggle-slider" />
+          </label>
+        </div>
+
         <Field label="Tags (comma-separated)" value={fields.tags} onChange={set("tags")} placeholder="india, roadtrip, adventure" />
         <Field label="Description (SEO)" value={fields.description} onChange={set("description")} placeholder="Brief description for search engines" textarea />
-        <Field label="Cover Image URL" value={fields.image} onChange={set("image")} placeholder="https://..." />
+        <Field label="Cover Image URL" value={fields.image} onChange={set("image")} placeholder="https://images.unsplash.com/photo-...?auto=format&fit=crop&w=1200&q=80" />
         <Field label="Optimized Image URL" value={fields.optimized_image} onChange={set("optimized_image")} placeholder="Leave blank to reuse cover image" />
         {fields.image && (
           <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, overflow: "hidden" }}>
@@ -657,16 +688,10 @@ function Field({ label, value, onChange, placeholder, textarea, mono }) {
 function parseTable(block) {
   const lines = block.trim().split("\n").filter(Boolean);
   if (lines.length < 2) return null;
-
-  const parseRow = (line) =>
-    line.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
-
+  const parseRow = (line) => line.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
   const isSeparator = (line) => /^\|?[\s\-:|]+\|/.test(line);
-
-  // Find separator row
   const sepIdx = lines.findIndex(isSeparator);
   if (sepIdx === -1 || sepIdx === 0) return null;
-
   const headers = parseRow(lines[0]);
   const alignments = parseRow(lines[sepIdx]).map(s => {
     if (s.startsWith(":") && s.endsWith(":")) return "center";
@@ -675,11 +700,9 @@ function parseTable(block) {
   });
   const bodyLines = lines.slice(sepIdx + 1).filter(l => !isSeparator(l));
   const rows = bodyLines.map(parseRow);
-
   const thCells = headers.map((h, i) =>
     `<th style="padding:10px 14px;text-align:${alignments[i] || "left"};font-weight:600;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;">${h}</th>`
   ).join("");
-
   const trRows = rows.map((cells, ri) => {
     const tds = cells.map((c, i) =>
       `<td style="padding:10px 14px;text-align:${alignments[i] || "left"};vertical-align:top;line-height:1.5;">${c}</td>`
@@ -687,7 +710,6 @@ function parseTable(block) {
     const bg = ri % 2 === 1 ? "background:#f8f9fa;" : "";
     return `<tr style="${bg}border-bottom:1px solid #f1f5f9;">${tds}</tr>`;
   }).join("");
-
   return `<div class="table-wrap"><table style="width:100%;border-collapse:collapse;font-size:14px;"><thead><tr style="background:#111;color:#fff;">${thCells}</tr></thead><tbody>${trRows}</tbody></table></div>`;
 }
 
@@ -713,7 +735,6 @@ function MarkdownPreview({ content }) {
     }
   }, [content]);
 
-  // Step 1 — extract fenced code blocks
   const codeBlocks = [];
   let working = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
     const i = codeBlocks.length;
@@ -721,7 +742,6 @@ function MarkdownPreview({ content }) {
     return `%%CODE_BLOCK_${i}%%`;
   });
 
-  // Step 2 — extract markdown tables (must happen before paragraph splitting)
   const tableBlocks = [];
   working = working.replace(/(?:(?:^\|.+\|\n){2,})/gm, (match) => {
     const html = parseTable(match);
@@ -731,7 +751,6 @@ function MarkdownPreview({ content }) {
     return `\n%%TABLE_BLOCK_${i}%%\n`;
   });
 
-  // Step 3 — convert remaining markdown to HTML
   let html = working
     .replace(/^---$/gm, "<hr>")
     .replace(/^### (.+)$/gm, "<h3>$1</h3>")
@@ -747,14 +766,12 @@ function MarkdownPreview({ content }) {
     .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
     .replace(/\n\n+/g, "</p><p>");
 
-  // Step 4 — restore code blocks
   codeBlocks.forEach(({ lang, code }, i) => {
     const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const block = `<div style="margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid #2d2d2d;"><div style="background:#1a1a2e;padding:8px 16px;"><span style="font-size:11px;color:#ff6b35;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;font-weight:600">${lang}</span></div><pre style="margin:0;padding:20px;background:#0d1117;overflow-x:auto;"><code class="language-${lang}" style="background:transparent;font-family:'DM Mono',monospace;font-size:13px;line-height:1.7;color:#c9d1d9;">${escaped}</code></pre></div>`;
     html = html.replace(`%%CODE_BLOCK_${i}%%`, block);
   });
 
-  // Step 5 — restore table blocks
   tableBlocks.forEach((tableHtml, i) => {
     html = html.replace(`%%TABLE_BLOCK_${i}%%`, tableHtml);
   });
