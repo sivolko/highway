@@ -1,0 +1,24 @@
+<!-- begin section-latest-posts -->
+<section class="section animate">
+  <div class="container">
+    <div class="section__inner">
+
+      <div class="section__info">
+        <div class="section__head">
+          <h2 class="section__title">All Stories</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        {% assign all_posts = site.posts %}
+        {% for post in all_posts %}
+        <div class="col col-4 col-d-6 col-t-12">
+          {% include article.html %}
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- end section-latest-posts -->
