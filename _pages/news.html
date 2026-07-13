@@ -12,7 +12,6 @@ permalink: /news/
 [dark] .nc-page-title,.dark-mode .nc-page-title{ color:#f5f5f5; }
 .nc-page-sub{ font-size:14px; color:#888; margin:0; }
 
-/* Jump pills */
 .nc-jumpbar{ display:flex; gap:8px; flex-wrap:wrap; padding:14px 16px 4px; max-width:1280px; margin:0 auto; }
 .nc-jump{ font-size:12px; font-weight:600; color:#555; background:#f1f5f9; border:1px solid #e2e8f0; padding:5px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s; }
 .nc-jump:hover{ background:#ff6b35; color:#fff; border-color:#ff6b35; }
@@ -74,22 +73,25 @@ permalink: /news/
   <p class="nc-page-sub">Every ride, trek, and detour — sorted by category. Swipe through, tap into a story.</p>
 </div>
 
-{% assign tags_list = site.tags | sort %}
 {% assign ring_colors = "#ff6b35,#22c55e,#3b82f6,#f59e0b,#8b5cf6,#06b6d4,#ef4444,#ec4899,#14b8a6,#f97316" | split: "," %}
+{% assign tag_size = 0 %}
+{% for tag in site.tags %}{% assign tag_size = tag_size | plus: 1 %}{% endfor %}
 
-{% if tags_list.size > 0 %}
+{% if tag_size > 0 %}
 <div class="nc-jumpbar">
-  {% for tag in tags_list %}
+  {% for tag in site.tags %}
     <a class="nc-jump" href="#cat-{{ tag[0] | slugify }}">{{ tag[0] | capitalize }}</a>
   {% endfor %}
 </div>
 {% endif %}
 
-{% for tag in tags_list %}
+{% assign ci = 0 %}
+{% for tag in site.tags %}
   {% assign tag_name  = tag[0] %}
   {% assign tag_posts = tag[1] %}
-  {% assign ci = forloop.index0 | modulo: 10 %}
-  {% assign rc = ring_colors[ci] %}
+  {% assign color_index = ci | modulo: 10 %}
+  {% assign rc = ring_colors[color_index] %}
+  {% assign ci = ci | plus: 1 %}
 
   <section class="nc-block" id="cat-{{ tag_name | slugify }}" aria-label="{{ tag_name }} stories">
     <div class="nc-header">
@@ -102,12 +104,11 @@ permalink: /news/
       <button class="nc-nav nc-nav--prev" type="button" aria-label="Scroll left">&#8249;</button>
       <div class="nc-track" role="list">
         {% for post in tag_posts %}
+          {% assign img = '/images/default.jpg' %}
           {% if post.image and post.image != '' %}
             {% assign img = post.image %}
           {% elsif post.optimized_image and post.optimized_image != '' %}
             {% assign img = post.optimized_image %}
-          {% else %}
-            {% assign img = '/images/default.jpg' %}
           {% endif %}
           {% assign pos = post.image_position | default: "50% 50%" %}
 
@@ -130,7 +131,7 @@ permalink: /news/
   </section>
 {% endfor %}
 
-{% if tags_list.size == 0 %}
+{% if tag_size == 0 %}
 <div class="nc-empty">No categories yet — publish a tagged post to see it here.</div>
 {% endif %}
 
