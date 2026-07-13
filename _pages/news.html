@@ -1,0 +1,173 @@
+---
+layout: default
+title: News
+description: "Browse unplotted stories by category — bike rides, treks, day trips, and everything in between."
+permalink: /news/
+---
+
+<style>
+/* ── News page — per-category Facebook-story carousels ─────────────────── */
+.nc-page-head{ padding:28px 16px 6px; max-width:1280px; margin:0 auto; }
+.nc-page-title{ font-family:'Poppins',system-ui,sans-serif; font-size:26px; font-weight:700; margin:0 0 6px; color:#111; }
+[dark] .nc-page-title,.dark-mode .nc-page-title{ color:#f5f5f5; }
+.nc-page-sub{ font-size:14px; color:#888; margin:0; }
+
+/* Jump pills */
+.nc-jumpbar{ display:flex; gap:8px; flex-wrap:wrap; padding:14px 16px 4px; max-width:1280px; margin:0 auto; }
+.nc-jump{ font-size:12px; font-weight:600; color:#555; background:#f1f5f9; border:1px solid #e2e8f0; padding:5px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s; }
+.nc-jump:hover{ background:#ff6b35; color:#fff; border-color:#ff6b35; }
+[dark] .nc-jump,.dark-mode .nc-jump{ background:#1e1e1e; border-color:#333; color:#bbb; }
+
+.nc-block{ position:relative; padding:14px 0 4px; overflow:hidden; scroll-margin-top:80px; }
+.nc-header{ display:flex; align-items:center; gap:10px; padding:0 16px 10px; max-width:1280px; margin:0 auto; }
+.nc-dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.nc-cat-title{ font-family:'Poppins',system-ui,sans-serif; font-size:15px; font-weight:700; color:#111; margin:0; text-transform:capitalize; }
+[dark] .nc-cat-title,.dark-mode .nc-cat-title{ color:#f5f5f5; }
+.nc-count{ margin-left:auto; font-family:monospace; font-size:10px; color:#aaa; background:#f8f9fa; border:1px solid #e2e8f0; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+[dark] .nc-count,.dark-mode .nc-count{ background:#1e1e1e; border-color:#333; color:#666; }
+
+.nc-track-outer{ position:relative; max-width:1280px; margin:0 auto; }
+.nc-track{ display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:4px 16px 16px; -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none; }
+.nc-track::-webkit-scrollbar{ display:none; }
+
+.nc-card{ flex:0 0 auto; width:128px; height:216px; border-radius:14px; overflow:hidden; scroll-snap-align:start; position:relative; display:flex; flex-direction:column; text-decoration:none; background-color:#1a1a2e; background-size:cover; background-position:center; box-shadow:0 2px 10px rgba(0,0,0,.18); outline:2.5px solid var(--ring,#ff6b35); outline-offset:2px; transition:transform .18s ease, box-shadow .18s ease; -webkit-tap-highlight-color:transparent; }
+.nc-card::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,.5) 60%, rgba(0,0,0,.88) 100%); border-radius:inherit; }
+.nc-card:hover,.nc-card:focus-visible{ transform:translateY(-4px) scale(1.025); box-shadow:0 10px 28px rgba(0,0,0,.28); }
+.nc-body{ position:absolute; bottom:0; left:0; right:0; z-index:3; padding:10px 10px 12px; }
+.nc-title{ font-family:'Poppins',system-ui,sans-serif; font-size:11px; font-weight:600; color:#fff; line-height:1.35; margin:0 0 5px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.nc-date{ font-family:monospace; font-size:9px; color:rgba(255,255,255,.55); display:block; }
+
+.nc-track-outer::before,.nc-track-outer::after{ content:''; position:absolute; top:0; bottom:16px; width:32px; z-index:5; pointer-events:none; }
+.nc-track-outer::before{ left:0; background:linear-gradient(to right, rgba(255,255,255,.95), transparent); }
+.nc-track-outer::after{ right:0; background:linear-gradient(to left, rgba(255,255,255,.95), transparent); }
+[dark] .nc-track-outer::before,.dark-mode .nc-track-outer::before{ background:linear-gradient(to right, rgba(20,20,20,.95), transparent); }
+[dark] .nc-track-outer::after,.dark-mode .nc-track-outer::after{ background:linear-gradient(to left, rgba(20,20,20,.95), transparent); }
+
+.nc-nav{ display:none; position:absolute; top:50%; transform:translateY(calc(-50% - 8px)); z-index:10; width:34px; height:34px; border-radius:50%; border:1px solid #e2e8f0; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.12); cursor:pointer; font-size:20px; font-weight:300; color:#1e293b; align-items:center; justify-content:center; line-height:1; transition:all .15s; font-family:system-ui,sans-serif; padding:0; }
+.nc-nav:hover{ background:#f8f9fa; box-shadow:0 4px 14px rgba(0,0,0,.16); }
+[dark] .nc-nav,.dark-mode .nc-nav{ background:#222; border-color:#333; color:#fff; }
+[dark] .nc-nav:hover,.dark-mode .nc-nav:hover{ background:#2a2a2a; }
+.nc-nav--prev{ left:6px; } .nc-nav--next{ right:6px; }
+.nc-nav[data-hidden="true"]{ opacity:.25; pointer-events:none; }
+
+.nc-empty{ max-width:1280px; margin:40px auto; padding:0 16px; text-align:center; color:#aaa; font-size:14px; }
+
+@media(min-width:600px){
+  .nc-nav{ display:flex; }
+  .nc-card{ width:146px; height:244px; }
+  .nc-track{ padding:4px 48px 16px; gap:12px; }
+  .nc-header{ padding:0 48px 10px; }
+  .nc-page-head,.nc-jumpbar{ padding-left:48px; padding-right:48px; }
+  .nc-title{ font-size:12px; }
+}
+@media(min-width:1024px){
+  .nc-card{ width:158px; height:268px; }
+  .nc-track{ gap:14px; }
+}
+@media(min-width:1280px){
+  .nc-card{ width:170px; height:288px; }
+}
+</style>
+
+<div class="nc-page-head">
+  <h1 class="nc-page-title">News &amp; Stories</h1>
+  <p class="nc-page-sub">Every ride, trek, and detour — sorted by category. Swipe through, tap into a story.</p>
+</div>
+
+{% assign tags_list = site.tags | sort %}
+{% assign ring_colors = "#ff6b35,#22c55e,#3b82f6,#f59e0b,#8b5cf6,#06b6d4,#ef4444,#ec4899,#14b8a6,#f97316" | split: "," %}
+
+{% if tags_list.size > 0 %}
+<div class="nc-jumpbar">
+  {% for tag in tags_list %}
+    <a class="nc-jump" href="#cat-{{ tag[0] | slugify }}">{{ tag[0] | capitalize }}</a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% for tag in tags_list %}
+  {% assign tag_name  = tag[0] %}
+  {% assign tag_posts = tag[1] %}
+  {% assign ci = forloop.index0 | modulo: 10 %}
+  {% assign rc = ring_colors[ci] %}
+
+  <section class="nc-block" id="cat-{{ tag_name | slugify }}" aria-label="{{ tag_name }} stories">
+    <div class="nc-header">
+      <span class="nc-dot" style="background:{{ rc }};"></span>
+      <h2 class="nc-cat-title">{{ tag_name }}</h2>
+      <span class="nc-count">{{ tag_posts.size }} {% if tag_posts.size == 1 %}story{% else %}stories{% endif %}</span>
+    </div>
+
+    <div class="nc-track-outer">
+      <button class="nc-nav nc-nav--prev" type="button" aria-label="Scroll left">&#8249;</button>
+      <div class="nc-track" role="list">
+        {% for post in tag_posts %}
+          {% if post.image and post.image != '' %}
+            {% assign img = post.image %}
+          {% elsif post.optimized_image and post.optimized_image != '' %}
+            {% assign img = post.optimized_image %}
+          {% else %}
+            {% assign img = '/images/default.jpg' %}
+          {% endif %}
+          {% assign pos = post.image_position | default: "50% 50%" %}
+
+          <a class="nc-card"
+             href="{{ post.url | prepend: site.baseurl }}"
+             style="background-image:url('{{ img | escape }}');background-position:{{ pos }};--ring:{{ rc }};"
+             role="listitem"
+             title="{{ post.title | escape }}">
+            <div class="nc-body">
+              <h3 class="nc-title">{{ post.title }}</h3>
+              <time class="nc-date" datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%b %d, %Y" }}
+              </time>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+      <button class="nc-nav nc-nav--next" type="button" aria-label="Scroll right">&#8250;</button>
+    </div>
+  </section>
+{% endfor %}
+
+{% if tags_list.size == 0 %}
+<div class="nc-empty">No categories yet — publish a tagged post to see it here.</div>
+{% endif %}
+
+<script>
+(function(){
+  document.querySelectorAll('.nc-block').forEach(function(block){
+    var track = block.querySelector('.nc-track'),
+        prev  = block.querySelector('.nc-nav--prev'),
+        next  = block.querySelector('.nc-nav--next');
+    if (!track || !prev || !next) return;
+
+    function cardWidth(){
+      var c = track.querySelector('.nc-card');
+      var gap = parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '12', 10);
+      return c ? c.offsetWidth + gap : 156;
+    }
+    function scrollTrack(dir){ track.scrollBy({ left: dir * cardWidth() * 3, behavior: 'smooth' }); }
+
+    prev.addEventListener('click', function(){ scrollTrack(-1); });
+    next.addEventListener('click', function(){ scrollTrack(1); });
+
+    function sync(){
+      var max = track.scrollWidth - track.clientWidth;
+      prev.dataset.hidden = track.scrollLeft <= 4 ? 'true' : 'false';
+      next.dataset.hidden = track.scrollLeft >= max - 4 ? 'true' : 'false';
+    }
+    track.addEventListener('scroll', sync, { passive:true });
+    window.addEventListener('resize', sync);
+
+    var startX = 0;
+    track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, { passive:true });
+    track.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) scrollTrack(dx < 0 ? 1 : -1);
+    }, { passive:true });
+
+    sync();
+  });
+})();
+</script>
