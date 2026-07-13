@@ -10,7 +10,7 @@
       </div>
 
       <div class="row">
-        {% assign all_posts = site.posts %}
+        {% assign all_posts = site.posts | where_exp: "post", "post.news_only != true" %}
         {% for post in all_posts %}
         <div class="col col-4 col-d-6 col-t-12">
           {% include article.html %}
