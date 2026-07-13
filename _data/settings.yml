@@ -15,8 +15,8 @@ menu_settings:
       url: "/"
     - title: "Videos"
       url: "/videos/"
-    - title: "Categories"
-      url: "/tags/"
+    - title: "News"
+      url: "/news/"
     - title: "About"
       url: "/about/"
 
