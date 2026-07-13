@@ -13,7 +13,8 @@ const buildFrontmatter = (fields) => {
   const tagLines = tags.map(t => `  - ${t}`).join("\n");
   const discoverLine  = fields.discover  ? "\ndiscover: true"      : "";
   const featuredLine  = fields.featured  ? "\nfeatured: true"      : "\nfeatured: false";
-  return `---\nlayout: post\ntitle: "${fields.title}"\ndate: ${fields.date}\ncategory: ${fields.category}${featuredLine}${discoverLine}\ntags:\n${tagLines}\nsubtitle: "${fields.subtitle}"\ndescription: "${fields.description}"\nimage: ${fields.image}\noptimized_image: ${fields.optimized_image || fields.image}\nimage_position: "${fields.image_position || "50% 50%"}"\nauthor: ${fields.author}\n---\n\n${fields.body}`;
+  const newsOnlyLine  = fields.news_only ? "\nnews_only: true"     : "\nnews_only: false";
+  return `---\nlayout: post\ntitle: "${fields.title}"\ndate: ${fields.date}\ncategory: ${fields.category}${featuredLine}${discoverLine}${newsOnlyLine}\ntags:\n${tagLines}\nsubtitle: "${fields.subtitle}"\ndescription: "${fields.description}"\nimage: ${fields.image}\noptimized_image: ${fields.optimized_image || fields.image}\nimage_position: "${fields.image_position || "50% 50%"}"\nauthor: ${fields.author}\n---\n\n${fields.body}`;
 };
 
 const GH = (token) => ({
@@ -59,7 +60,7 @@ export default function CMS() {
   const emptyFields = {
     title: "", subtitle: "", date: todayISO(), category: "road-trip", tags: "",
     description: "", image: "", optimized_image: "", image_position: "50% 50%",
-    featured: false, discover: false, author: config.author, body: "",
+    featured: false, discover: false, news_only: false, author: config.author, body: "",
   };
   const [fields, setFields] = useState(emptyFields);
 
@@ -104,6 +105,7 @@ export default function CMS() {
       image_position: parse("image_position") || "50% 50%",
       featured: parse("featured") === "true",
       discover: parse("discover") === "true",
+      news_only: parse("news_only") === "true",
       author: parse("author"), body,
     };
   };
@@ -510,6 +512,7 @@ function EditorView({ fields, set, toggle, previewMode, setPreviewMode, onPublis
         <input className="input" style={{ flex:1, fontSize:15, fontWeight:500, border:"none", padding:"6px 0", borderBottom:"2px solid #f1f5f9", borderRadius:0, background:"transparent" }}
           placeholder="Post title..." value={fields.title} onChange={set("title")} />
         {editPost?.isDraft && <span style={{ fontSize:11, background:"#fef9c3", color:"#a16207", padding:"3px 8px", borderRadius:6, fontWeight:500 }}>Draft</span>}
+        {fields.news_only && <span style={{ fontSize:10, background:"#eff6ff", color:"#1d4ed8", padding:"3px 8px", borderRadius:6, fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em" }}>News Only</span>}
         {fields.featured  && <span style={{ fontSize:10, background:"#fff7ed", color:"#c2410c", padding:"3px 8px", borderRadius:6, fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em" }}>Featured</span>}
         {fields.discover  && <span style={{ fontSize:10, background:"#fef3c7", color:"#92400e", padding:"3px 8px", borderRadius:6, fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em" }}>Trending</span>}
         <div style={{ display:"flex", gap:8, flexShrink:0 }}>
@@ -620,40 +623,61 @@ function MetaPanel({ fields, set, toggle, onPositionChange }) {
     <div style={{ padding:28, maxWidth:680 }}>
       <div style={{ display:"grid", gap:16 }}>
 
+        {/* News Only toggle */}
+        <div className="cms-toggle"
+          style={{ borderColor:fields.news_only?"#93c5fd":"#e2e8f0", background:fields.news_only?"#eff6ff":"#f8f9fa", cursor:"pointer" }}
+          onClick={toggle("news_only")}>
+          <div>
+            <div style={{ fontWeight:600, fontSize:13, color:"#111", display:"flex", alignItems:"center", gap:6 }}>
+              <span style={{ fontSize:15 }}>{fields.news_only ? "📰" : "🗞️"}</span>
+              News Only
+            </div>
+            <div style={{ fontSize:11, color:"#64748b", marginTop:3 }}>
+              {fields.news_only
+                ? "Hidden from homepage — only appears on the /news/ page under its category"
+                : "Toggle on to publish this only to the News page, keeping it off the homepage"}
+            </div>
+          </div>
+          <button className="toggle-track" style={{ background:fields.news_only?"#3b82f6":"#e2e8f0" }}
+            onClick={e => { e.stopPropagation(); toggle("news_only")(); }} type="button">
+            <span className="toggle-thumb" style={{ left:fields.news_only?22:2 }} />
+          </button>
+        </div>
+
         {/* Discover toggle */}
         <div className="cms-toggle"
-          style={{ borderColor:fields.discover?"#fde68a":"#e2e8f0", background:fields.discover?"#fffbeb":"#f8f9fa", cursor:"pointer" }}
-          onClick={toggle("discover")}>
+          style={{ borderColor:fields.discover?"#fde68a":"#e2e8f0", background:fields.discover?"#fffbeb":"#f8f9fa", cursor: fields.news_only ? "not-allowed" : "pointer", opacity: fields.news_only ? 0.5 : 1 }}
+          onClick={() => { if (!fields.news_only) toggle("discover")(); }}>
           <div>
             <div style={{ fontWeight:600, fontSize:13, color:"#111", display:"flex", alignItems:"center", gap:6 }}>
               <span style={{ fontSize:15 }}>{fields.discover ? "🔥" : "⭐"}</span>
               Add to Discover Carousel
             </div>
             <div style={{ fontSize:11, color:"#64748b", marginTop:3 }}>
-              {fields.discover ? "Shows in the Trending strip at top of homepage" : "Toggle on to feature in the homepage carousel"}
+              {fields.news_only ? "Unavailable while News Only is on" : fields.discover ? "Shows in the Trending strip at top of homepage" : "Toggle on to feature in the homepage carousel"}
             </div>
           </div>
           <button className="toggle-track" style={{ background:fields.discover?"#f59e0b":"#e2e8f0" }}
-            onClick={e => { e.stopPropagation(); toggle("discover")(); }} type="button">
+            onClick={e => { e.stopPropagation(); if (!fields.news_only) toggle("discover")(); }} type="button" disabled={fields.news_only}>
             <span className="toggle-thumb" style={{ left:fields.discover?22:2 }} />
           </button>
         </div>
 
         {/* Featured toggle */}
         <div className="cms-toggle"
-          style={{ borderColor:fields.featured?"#86efac":"#e2e8f0", background:fields.featured?"#f0fdf4":"#f8f9fa", cursor:"pointer" }}
-          onClick={toggle("featured")}>
+          style={{ borderColor:fields.featured?"#86efac":"#e2e8f0", background:fields.featured?"#f0fdf4":"#f8f9fa", cursor: fields.news_only ? "not-allowed" : "pointer", opacity: fields.news_only ? 0.5 : 1 }}
+          onClick={() => { if (!fields.news_only) toggle("featured")(); }}>
           <div>
             <div style={{ fontWeight:600, fontSize:13, color:"#111", display:"flex", alignItems:"center", gap:6 }}>
               <span style={{ fontSize:15 }}>📌</span>
               Featured post
             </div>
             <div style={{ fontSize:11, color:"#64748b", marginTop:3 }}>
-              {fields.featured ? "Shows in the homepage featured grid section" : "Toggle on to pin to homepage featured section"}
+              {fields.news_only ? "Unavailable while News Only is on" : fields.featured ? "Shows in the homepage featured grid section" : "Toggle on to pin to homepage featured section"}
             </div>
           </div>
           <button className="toggle-track" style={{ background:fields.featured?"#22c55e":"#e2e8f0" }}
-            onClick={e => { e.stopPropagation(); toggle("featured")(); }} type="button">
+            onClick={e => { e.stopPropagation(); if (!fields.news_only) toggle("featured")(); }} type="button" disabled={fields.news_only}>
             <span className="toggle-thumb" style={{ left:fields.featured?22:2 }} />
           </button>
         </div>
@@ -672,6 +696,9 @@ function MetaPanel({ fields, set, toggle, onPositionChange }) {
           </div>
         </div>
         <Field label="Tags (comma-separated)" value={fields.tags} onChange={set("tags")} placeholder="india, roadtrip, adventure" />
+        <div style={{ fontSize:11, color:"#94a3b8", marginTop:-10 }}>
+          Tags decide which category carousel this shows under on the <strong>/news/</strong> page.
+        </div>
         <Field label="Description (SEO)" value={fields.description} onChange={set("description")} placeholder="Brief description for search engines" textarea />
         <Field label="Cover Image URL" value={fields.image} onChange={set("image")} placeholder="https://images.unsplash.com/photo-...?auto=format&fit=crop&w=1200&q=80" />
         <Field label="Optimized Image URL" value={fields.optimized_image} onChange={set("optimized_image")} placeholder="Leave blank to reuse cover image" />
