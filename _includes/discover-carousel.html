@@ -1,10 +1,11 @@
 {% comment %}
   Shows latest 10 posts in the carousel by default.
-  To hand-pick posts: add  discover: true  to post front matter, then swap
+  Posts marked news_only: true are excluded — they only appear on /news/.
+  To hand-pick posts instead: add  discover: true  to post front matter, then swap
   the assign line below to:
     {% assign discover_posts = site.posts | where_exp: "post", "post.discover == true" %}
 {% endcomment %}
-{% assign discover_posts = site.posts | limit: 10 %}
+{% assign discover_posts = site.posts | where_exp: "post", "post.news_only != true" | limit: 10 %}
 
 {% if discover_posts.size > 0 %}
 <style>
