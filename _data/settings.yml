@@ -15,10 +15,10 @@ menu_settings:
       url: "/"
     - title: "Videos"
       url: "/videos/"
+    - title: "Categories"
+      url: "/tags/"
     - title: "About"
       url: "/about/"
-    - title: "Contact"
-      url: "/contact/"
 
 #-------------------------------
 # Hero Settings
